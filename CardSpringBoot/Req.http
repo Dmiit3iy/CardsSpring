@@ -1,0 +1,51 @@
+### add User
+POST localhost:8080/user
+content-type:application/json
+
+{
+  "login" : "qwerty",
+  "password" : "123",
+  "name" : "Ivanov Ivan Ivanovich"
+
+}
+
+###
+GET localhost:8080/user?login=qwerty&password=123
+###
+GET localhost:8080/user/1
+
+
+
+### add Category
+POST localhost:8080/category/1
+content-type:application/json
+
+{
+  "name" : "Напитки"
+}
+
+### add Category
+POST localhost:8080/category/1
+content-type:application/json
+
+{
+  "name" : "Еда"
+}
+
+### add Card
+POST localhost:8080/card/1
+content-type:application/json
+
+{
+  "question": "Лучший напиток на Земле?",
+  "answer": "Вода"
+}
+
+
+###
+GET localhost:8080//category/user/1
+
+###
+GET localhost:8080//card/user/1
+
+
