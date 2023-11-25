@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,10 +30,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public List<User> get() {
-        return userRepository.findAll();
-    }
+
 
     @Override
     public User get(long id) {
@@ -57,5 +54,10 @@ public class UserServiceImpl implements UserService {
         User user = this.get(id);
         userRepository.deleteById(id);
         return user;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }

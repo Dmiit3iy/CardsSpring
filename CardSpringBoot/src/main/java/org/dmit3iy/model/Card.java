@@ -30,7 +30,7 @@ public class Card {
     @NonNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(nullable = false)
-    private LocalDate creationDate;
+    private LocalDate creationDate=LocalDate.now();
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "categoryId")

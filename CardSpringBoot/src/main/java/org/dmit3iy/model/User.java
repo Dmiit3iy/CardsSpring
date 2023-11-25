@@ -2,10 +2,7 @@ package org.dmit3iy.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -36,10 +33,10 @@ public class User {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(nullable = false)
-    @NonNull
-    private LocalDate regDate;
+    private LocalDate regDate = LocalDate.now();
 
     @JsonIgnore
+    @ToString.Exclude
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Category> categories;

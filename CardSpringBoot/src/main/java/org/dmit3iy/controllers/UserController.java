@@ -1,6 +1,7 @@
 package org.dmit3iy.controllers;
 
 import org.dmit3iy.dto.ResponseResult;
+import org.dmit3iy.model.Category;
 import org.dmit3iy.model.User;
 import org.dmit3iy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+//!!!!!
 @RequestMapping("/user")
 public class UserController {
     private UserService userService;
@@ -29,6 +33,15 @@ public class UserController {
         }
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<ResponseResult<List<User>>> getAll(){
+        try {
+            List<User> userList = this.userService.getAllUsers();
+            return new ResponseEntity<>(new ResponseResult<>(null, userList), HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(new ResponseResult<>(e.getMessage(), null), HttpStatus.BAD_REQUEST);
+        }
+    }
     /**
      * get – осуществляет отображение пользователя с заданным id
      *
@@ -81,5 +94,7 @@ public class UserController {
         }
 
     }
+
+
 
 }
